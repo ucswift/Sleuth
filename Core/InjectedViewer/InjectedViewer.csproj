@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{89775AC4-7BA4-40A6-8C47-ABBA0E561BC2}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sleuth.InjectedViewer</RootNamespace>
+    <AssemblyName>Sleuth.InjectedViewer</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\Build\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Build\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>..\Build\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>..\Build\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IronPython">
+      <HintPath>..\..\packages\IronPython.2.6.1\lib\Net20\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules">
+      <HintPath>..\..\packages\IronPython.2.6.1\lib\Net20\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>..\..\packages\IronPython.2.6.1\lib\Net20\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\..\packages\IronPython.2.6.1\lib\Net20\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.Core">
+      <HintPath>..\..\packages\IronPython.2.6.1\lib\Net20\Microsoft.Scripting.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting.ExtensionAttribute">
+      <HintPath>..\..\packages\IronPython.2.6.1\lib\Net20\Microsoft.Scripting.ExtensionAttribute.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnimatedObservableCollection.cs" />
+    <Compile Include="Behavior\ListViewItemBehavior.cs" />
+    <Compile Include="DelayedCall.cs" />
+    <Compile Include="EntryPoint.cs" />
+    <Compile Include="Reflector.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="ViewModel\ElementTreeExplorer\ResourceItem.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\AssemblyBrowserViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\AssemblyViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\BreadcrumbTrailViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\CurrentBreadcrumbViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\IBreadcrumb.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\IHaveFilterSettings.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\ICanRefresh.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\MemoryExplorerListFilterSettingsViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\MemoryExplorerListItemViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\ObjectMemberViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\ObjectViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\MemoryExplorerTreeItemViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\TypeMemberViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\TypeViewModel.cs" />
+    <Compile Include="ViewModel\ElementTreeExplorer\ElementTreeExplorerViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\ElementTreeExplorer\AdornerContainer.cs" />
+    <Compile Include="ViewModel\ElementTreeExplorer\ApplicationTreeItem.cs" />
+    <Compile Include="ViewModel\ElementTreeExplorer\ResourceContainerItem.cs" />
+    <Compile Include="ViewModel\ElementTreeExplorer\ResourceDictionaryItem.cs" />
+    <Compile Include="ViewModel\ElementTreeExplorer\VisualItem.cs" />
+    <Compile Include="ViewModel\ElementTreeExplorer\ElementTreeItem.cs" />
+    <Compile Include="View\MemoryExplorer\AssemblyBrowserView.xaml.cs">
+      <DependentUpon>AssemblyBrowserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemoryExplorer\BreadcrumbTrailView.xaml.cs">
+      <DependentUpon>BreadcrumbTrailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Filtering\FilterCriterion.cs" />
+    <Compile Include="Filtering\PropertyFilter.cs" />
+    <Compile Include="Filtering\PropertyFilterGroup.cs" />
+    <Compile Include="Filtering\PropertyFilterGroupView.xaml.cs">
+      <DependentUpon>PropertyFilterGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shell\InjectedWindow.xaml.cs">
+      <DependentUpon>InjectedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewModel\Shell\CommandViewModel.cs" />
+    <Compile Include="ViewModel\Shell\InjectedWindowViewModel.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModel\Scriptorium\ScriptoriumViewModel.cs" />
+    <Compile Include="ViewModel\DebugOutput\DebugOutputViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="ViewModel\WorkspaceViewModel.cs" />
+    <Compile Include="ViewModel\MemoryExplorer\MemoryExplorerViewModel.cs" />
+    <Compile Include="View\MemoryExplorer\AssemblyBrowserFilterSettingsView.xaml.cs">
+      <DependentUpon>AssemblyBrowserFilterSettingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Shell\InjectedWindowView.xaml.cs">
+      <DependentUpon>InjectedWindowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemoryExplorer\MemoryExplorerView.xaml.cs">
+      <DependentUpon>MemoryExplorerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Scriptorium\ScriptoriumView.xaml.cs">
+      <DependentUpon>ScriptoriumView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemoryExplorer\SelectedAssemblyView.xaml.cs">
+      <DependentUpon>SelectedAssemblyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemoryExplorer\SelectedEntityListView.xaml.cs">
+      <DependentUpon>SelectedEntityListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemoryExplorer\SelectedObjectView.xaml.cs">
+      <DependentUpon>SelectedObjectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemoryExplorer\SelectedTypeView.xaml.cs">
+      <DependentUpon>SelectedTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DebugOutput\DebugOutputView.xaml.cs">
+      <DependentUpon>DebugOutputView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ElementTreeExplorer\ElementTreeExplorerView.xaml.cs">
+      <DependentUpon>ElementTreeExplorerView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EmbeddedResource Include="ViewModel\Scriptorium\StarterScript.py" />
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\MemoryExplorer\AssemblyBrowserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\BreadcrumbTrailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Filtering\PropertyFilterGroupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Shell\InjectedWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\AssemblyBrowserFilterSettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Shell\InjectedWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\MemoryExplorerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Shell\Resources\InjectedWindowViewResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\Resources\AssemblyBrowserViewResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\Resources\SelectedEntityListViewResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Scriptorium\ScriptoriumView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\SelectedAssemblyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\SelectedEntityListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\SelectedObjectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryExplorer\SelectedTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\DebugOutput\DebugOutputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\ElementTreeExplorer\ElementTreeExplorerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\MemoryExplorer\Resources\Images\Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Shell\Resources\Images\app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WinForms.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\MemoryExplorer\Resources\Images\Assembly.gif" />
+    <EmbeddedResource Include="View\MemoryExplorer\Resources\Images\ClassOrStruct.gif" />
+    <EmbeddedResource Include="View\MemoryExplorer\Resources\Images\Enum.gif" />
+    <EmbeddedResource Include="View\MemoryExplorer\Resources\Images\Interface.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\MemoryExplorer\Resources\Images\Reflector.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

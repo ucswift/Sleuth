@@ -1,0 +1,24 @@
+﻿<UserControl 
+  x:Class="Sleuth.InjectedViewer.View.MemoryExplorer.AssemblyBrowserView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:vw="clr-namespace:Sleuth.InjectedViewer.View.MemoryExplorer"  
+  >
+  <UserControl.Resources>
+    <ResourceDictionary Source="Resources/AssemblyBrowserViewResources.xaml" />
+  </UserControl.Resources>
+
+  <DockPanel>
+    <vw:AssemblyBrowserFilterSettingsView
+      DockPanel.Dock="Top"
+      Margin="0,0,0,4"
+      />
+    <TreeView
+      ItemsSource="{Binding Path=Assemblies, Mode=OneWay}" 
+      SelectedItemChanged="OnSelectedItemChanged"
+      Style="{StaticResource AssemblyBrowserViewTreeViewStyle}"
+      VirtualizingStackPanel.IsVirtualizing="True"
+      VirtualizingStackPanel.VirtualizationMode="Recycling"
+      />
+  </DockPanel>
+</UserControl>

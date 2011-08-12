@@ -1,0 +1,93 @@
+﻿<UserControl 
+  x:Class="Sleuth.InjectedViewer.View.MemoryExplorer.MemoryExplorerView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+  xmlns:vw="clr-namespace:Sleuth.InjectedViewer.View.MemoryExplorer"
+  xmlns:vm="clr-namespace:Sleuth.InjectedViewer.ViewModel.MemoryExplorer"
+  >
+  <UserControl.Style>
+    <!-- This Style gives the workspace a wait cursor while the TreeView loads many items. -->
+    <Style>
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding Path=IsDoingWork}" Value="True">
+          <Setter Property="FrameworkElement.Cursor" Value="Wait" />
+          <Setter Property="FrameworkElement.ForceCursor" Value="True" />
+        </DataTrigger>
+      </Style.Triggers>
+    </Style>
+  </UserControl.Style>
+  <Grid>
+    <!-- MAIN UI AREA -->
+    <Grid Background="{DynamicResource PrimaryBackgroundBrush}" PreviewKeyDown="Grid_PreviewKeyDown">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1.15*" MinWidth="260" />
+        <ColumnDefinition Width="3*" />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+
+      <vw:AssemblyBrowserView 
+        Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+        DataContext="{Binding Path=AssemblyBrowser, Mode=OneTime}"
+        Margin="0,0,7,0"
+        />
+
+      <GridSplitter Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" ResizeDirection="Columns" Width="6"  />
+
+      <DockPanel Grid.Row="0" Grid.Column="1">
+        <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center" Margin="3,0">
+          <Hyperlink 
+            x:Name="exploreElementTreeLink"
+            x:FieldModifier="private"
+            Command="{Binding Path=ExploreElementTreeCommand, Mode=OneTime}"
+            >
+            <TextBlock Text="Explore Element Tree" />
+          </Hyperlink>
+        </TextBlock>
+        <vw:BreadcrumbTrailView DataContext="{Binding Path=BreadcrumbTrail, Mode=OneTime}" />  
+      </DockPanel>      
+
+      <Border Grid.Row="1" Grid.Column="1" Background="LightGray">
+        <ContentControl 
+          x:FieldModifier="private"
+          x:Name="contentControl"
+          Content="{Binding Path=SelectedObject, Mode=OneWay}"
+          >
+          <ContentControl.RenderTransform>
+            <ScaleTransform ScaleX="1" ScaleY="1" />
+          </ContentControl.RenderTransform>
+          <ContentControl.Resources>
+            <DataTemplate DataType="{x:Type vm:AssemblyViewModel}">
+              <vw:SelectedAssemblyView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:TypeViewModel}">
+              <vw:SelectedTypeView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ObjectViewModel}">
+              <vw:SelectedObjectView />
+            </DataTemplate>
+          </ContentControl.Resources>
+        </ContentControl>
+      </Border>
+    </Grid>
+    
+    <!-- ELEMENT TREE WORKSPACE AREA -->
+    <Grid Background="#88000000">
+      <Grid.Visibility>
+        <Binding Path="IsExploringElementTree">
+          <Binding.Converter>
+            <BooleanToVisibilityConverter />
+          </Binding.Converter>
+        </Binding>
+      </Grid.Visibility>
+      
+      <ContentPresenter 
+        Content="{Binding Path=ElementTreeExplorerWorkspace}" 
+        Width="500" Height="500"
+        HorizontalAlignment="Center" VerticalAlignment="Center"
+        />
+    </Grid>
+  </Grid>
+</UserControl>

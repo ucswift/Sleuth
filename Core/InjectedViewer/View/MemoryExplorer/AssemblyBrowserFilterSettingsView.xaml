@@ -1,0 +1,64 @@
+﻿<UserControl 
+  x:Class="Sleuth.InjectedViewer.View.MemoryExplorer.AssemblyBrowserFilterSettingsView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+   >
+  <GroupBox       
+    Header="Filter Settings"      
+    Padding="3"
+    >
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="*" MinWidth="100" />
+        <ColumnDefinition Width="Auto" />
+      </Grid.ColumnDefinitions>
+      <TextBlock 
+        Grid.Row="0" Grid.Column="0" 
+        Text="Filter types on:" 
+        VerticalAlignment="Center" 
+        />
+      <TextBox 
+        Grid.Row="0" Grid.Column="1"
+        Margin="8,4,4,4" 
+        Text="{Binding Path=FilterText, UpdateSourceTrigger=PropertyChanged}" 
+        VerticalAlignment="Center"
+        />
+      <CheckBox
+        Grid.Row="1" Grid.Column="0" 
+        Content="Exact _match"
+        IsChecked="{Binding Path=ExactMatch, Mode=TwoWay}"
+        VerticalAlignment="Center"
+        />
+      <Button 
+        Grid.Row="1" Grid.Column="1" 
+        Command="{Binding Path=ApplyFilterCommand, Mode=OneTime}" 
+        Content="_Apply" 
+        HorizontalAlignment="Right"
+        IsDefault="True" 
+        Margin="8,2" 
+        VerticalAlignment="Center" 
+        Width="80"
+        />
+      <Button 
+        Grid.Row="0" Grid.Column="2" 
+        Command="{Binding Path=ClearFilterCommand, Mode=OneTime}" 
+        Content="X" 
+        Cursor="Hand"
+        FontFamily="Courier" 
+        FontSize="9"
+        FontWeight="Bold"  
+        Margin="0,1,0,0"
+        Padding="0"
+        ToolTip="Clear filter"        
+        VerticalAlignment="Center" 
+        VerticalContentAlignment="Bottom"
+        Width="16" Height="16" 
+        />
+    </Grid>
+  </GroupBox>
+</UserControl>

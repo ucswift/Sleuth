@@ -1,0 +1,151 @@
+﻿<UserControl
+  x:Class="Sleuth.InjectedViewer.View.MemoryExplorer.SelectedEntityListView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:bvr="clr-namespace:Sleuth.InjectedViewer.Behavior"
+  xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+  xmlns:filter="clr-namespace:Sleuth.InjectedViewer.Filtering"
+  >
+  <UserControl.Resources>
+    <ResourceDictionary Source="Resources/SelectedEntityListViewResources.xaml" />
+  </UserControl.Resources>
+  <DockPanel>
+    <DockPanel 
+      DockPanel.Dock="Top" 
+      Background="{DynamicResource PrimaryBackgroundBrush}"
+      Margin="0,4,0,4"
+      MinHeight="40"
+      >
+      <Button 
+        DockPanel.Dock="Right" 
+        Click="OnRefreshButtonClick"
+        Margin="4"
+        Style="{StaticResource RefreshButtonStyle}" 
+        VerticalAlignment="Center"
+        />
+      <TextBlock        
+        FontSize="15" 
+        FontWeight="Bold" 
+        Margin="2,3"
+        Text="{Binding Path=DisplayName, Mode=OneTime}" 
+        TextAlignment="Left" 
+        TextWrapping="Wrap"
+        VerticalAlignment="Center"
+        />
+    </DockPanel>
+    <Expander
+      DockPanel.Dock="Bottom"
+      Background="{DynamicResource PrimaryBackgroundBrush}"
+      Header="Filter Settings" 
+      IsExpanded="{Binding Path=FilterSettings.IsFilterAreaExpanded, Mode=TwoWay}"
+      Margin="0,2,0,0"
+      >
+      <filter:PropertyFilterGroupView 
+        CollectionView="{Binding ElementName=_listView, Path=ItemsSource}" 
+        FilterGroup="{Binding Path=FilterSettings.FilterGroup, Mode=OneWay}" 
+        />
+    </Expander>
+
+    <ListView 
+      x:FieldModifier="private"
+      x:Name="_listView"
+      AlternationCount="2"
+      Background="#CCFFFFFF"
+      ItemsSource="{Binding}"
+      IsSynchronizedWithCurrentItem="False"
+      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+      ScrollViewer.VerticalScrollBarVisibility="Visible"
+      SelectionMode="Single"
+      >
+      <ListView.DataContext>
+        <CollectionViewSource Source="{Binding Path=PropertiesAndFields}">
+          <CollectionViewSource.GroupDescriptions>
+            <PropertyGroupDescription PropertyName="GroupByCategory" />
+          </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+      </ListView.DataContext>
+      <ListView.ItemContainerStyle>
+        <Style TargetType="{x:Type ListViewItem}">
+          <Setter Property="bvr:ListViewItemBehavior.BringIntoViewUponLoadIfSelected" Value="True" />
+          <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+          <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay}" />
+          <Style.Triggers>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="ItemsControl.AlternationIndex" Value="1" />
+                <Condition Property="IsSelected" Value="False" />
+                <Condition Property="IsMouseOver" Value="False" />
+              </MultiTrigger.Conditions>
+              <Setter Property="Background" Value="#EEEEEEEE" />
+            </MultiTrigger>
+          </Style.Triggers>
+        </Style>
+      </ListView.ItemContainerStyle>
+      <ListView.View>
+        <GridView>
+          <GridViewColumn Header="Member Name">
+            <GridViewColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock 
+                  Text="{Binding Path=DisplayName, Mode=OneTime}" 
+                  ToolTip="{Binding Path=ToolTipText, Mode=OneTime}" 
+                  >
+                  <TextBlock.ContextMenu>
+                    <ContextMenu>
+                      <MenuItem 
+                        Command="{Binding Path=OpenInReflectorCommand, Mode=OneTime}" 
+                        Header="Open in Reflector"
+                        >
+                        <MenuItem.Icon>
+                          <Image Source="Resources/Images/Reflector.gif" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                      </MenuItem>                        
+                    </ContextMenu>
+                  </TextBlock.ContextMenu>
+                </TextBlock>
+              </DataTemplate>
+            </GridViewColumn.CellTemplate>
+          </GridViewColumn>
+          <GridViewColumn Header="Value" Width="390">
+            <GridViewColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock>
+                  <Hyperlink
+                    Command="{Binding Path=NavigateToValueCommand, Mode=OneTime}"
+                    IsEnabled="{Binding Path=IsRelevant, Mode=OneTime}" 
+                    Style="{x:Null}"
+                    ToolTip="Navigate to object"
+                    >
+                    <TextBlock x:Name="textBlk" Text="{Binding Path=ValueString, Mode=OneWay}" />
+                  </Hyperlink>
+                  <TextBlock.ContextMenu>
+                    <ContextMenu>
+                      <MenuItem 
+                        Command="{Binding Path=CopyValueTextToClipboardCommand, Mode=OneTime}"
+                        Header="Copy to clipboard"  
+                        >
+                        <MenuItem.Icon>
+                          <Image Source="Resources/Images/Copy.png" Width="16" Height="16" />
+                      </MenuItem.Icon>
+                      </MenuItem>
+                    </ContextMenu>
+                  </TextBlock.ContextMenu>
+                </TextBlock>
+              </DataTemplate>
+            </GridViewColumn.CellTemplate>
+          </GridViewColumn>
+          <GridViewColumn Header="Type" Width="155">
+            <GridViewColumn.CellTemplate>
+              <DataTemplate>
+                <TextBlock 
+                  Text="{Binding Path=TypeName, Mode=OneTime}" 
+                  ToolTip="{Binding Path=FullyQualifiedTypeName, Mode=OneTime}" 
+                  />
+              </DataTemplate>
+            </GridViewColumn.CellTemplate>
+          </GridViewColumn>
+        </GridView>
+      </ListView.View>
+    </ListView>
+  </DockPanel>
+</UserControl>
