@@ -90,7 +90,7 @@ namespace Sleuth.InjectedViewer.ViewModel.MemoryExplorer
             {
                 AssemblyViewModel assemblyVM = new AssemblyViewModel(assembly, this);
 
-                if (!assemblyVM.DisplayName.StartsWith("Crack.NET.InjectedViewer") &&
+								if (!assemblyVM.DisplayName.StartsWith("Sleuth.InjectedViewer") &&
                     !assemblyVM.DisplayName.StartsWith("ManagedInjector"))
                 {
                     assemblyVM.PropertyChanged += this.OnAssemblyViewModelPropertyChanged;

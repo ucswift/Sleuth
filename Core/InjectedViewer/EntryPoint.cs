@@ -31,7 +31,10 @@ namespace Sleuth.InjectedViewer
 				  Title = "Sleuth Viewer"
 				};
 
-				OpenInWindowsForms(injectedWindow);
+				if (IsWpfApplication)
+					OpenInWpf(injectedWindow);
+				else
+					OpenInWindowsForms(injectedWindow);
 			}
 			else
 			{

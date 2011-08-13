@@ -132,6 +132,7 @@
     <Compile Include="Behavior\ListViewItemBehavior.cs" />
     <Compile Include="DelayedCall.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="MemoryScanner.cs" />
     <Compile Include="Reflector.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="ViewModel\ElementTreeExplorer\ResourceItem.cs" />
@@ -169,6 +170,9 @@
     <Compile Include="Filtering\PropertyFilterGroup.cs" />
     <Compile Include="Filtering\PropertyFilterGroupView.xaml.cs">
       <DependentUpon>PropertyFilterGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MemoryScanner\MemoryScannerView.xaml.cs">
+      <DependentUpon>MemoryScannerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Shell\InjectedWindow.xaml.cs">
       <DependentUpon>InjectedWindow.xaml</DependentUpon>
@@ -254,6 +258,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MemoryScanner\MemoryScannerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Shell\InjectedWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -347,9 +355,6 @@
     <Resource Include="View\Shell\Resources\Images\app.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WinForms.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="View\MemoryExplorer\Resources\Images\Assembly.gif" />
     <EmbeddedResource Include="View\MemoryExplorer\Resources\Images\ClassOrStruct.gif" />
     <EmbeddedResource Include="View\MemoryExplorer\Resources\Images\Enum.gif" />
@@ -374,6 +379,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WinForms.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
