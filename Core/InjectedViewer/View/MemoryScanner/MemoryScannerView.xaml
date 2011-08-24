@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Sleuth.InjectedViewer.View.MemoryScanner.MemoryScannerView"
+						 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+						 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+						 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+						 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+						 mc:Ignorable="d">
+	<Grid 
+		Background="{DynamicResource PrimaryBackgroundBrush}" 
+		FocusManager.FocusedElement="{Binding ElementName=scriptEditor, Mode=OneTime}"
+		>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="280" MinHeight="100" />
+		</Grid.RowDefinitions>
+		<DockPanel Grid.Row="1" Margin="4,0,0,0">
+			<GroupBox Grid.Row="2" Header="Search Memory" Margin="0,7,0,0">
+				<StackPanel DockPanel.Dock="Bottom" Margin="0,4" Orientation="Horizontal">
+					<TextBlock Text="Value" />
+					<TextBox x:Name="txtValue" />
+					<ComboBox>
+						<ComboBoxItem>Int16</ComboBoxItem>
+						<ComboBoxItem>Int32</ComboBoxItem>
+						<ComboBoxItem>Int64</ComboBoxItem>
+					</ComboBox>
+					<Button 
+					Command="{Binding Path=ExecuteSearchCommand, Mode=OneTime}" 
+					Content="E_xecute Search (F5)"
+					MinWidth="200" MaxWidth="200"
+					/>
+				</StackPanel>
+			</GroupBox>
+			<Grid></Grid>
+			<GroupBox Grid.Row="2" Header="Filter Results" Margin="0,7,0,0">
+				<StackPanel DockPanel.Dock="Bottom" Margin="0,4" Orientation="Horizontal">
+
+					<TextBlock Text="Value" />
+					<TextBox x:Name="txtValueFilter" />
+					<ComboBox>
+						<ComboBoxItem>Int16</ComboBoxItem>
+						<ComboBoxItem>Int32</ComboBoxItem>
+						<ComboBoxItem>Int64</ComboBoxItem>
+					</ComboBox>
+					<Button 
+					Command="{Binding Path=ExecuteSearchCommand, Mode=OneTime}" 
+					Content="E_xecute Search (F5)"
+					MinWidth="200" MaxWidth="200"
+					/>
+				</StackPanel>
+			</GroupBox>
+		</DockPanel>
+		<GridSplitter 
+			Grid.Row="2"
+			BorderBrush="DarkGray" BorderThickness="1"
+			Height="6" 
+			HorizontalAlignment="Stretch"
+			ResizeDirection="Rows" 
+			VerticalAlignment="Top"
+			/>
+		<GroupBox Grid.Row="2" Header="Fixed Values Results" Margin="0,7,0,0">
+			<DockPanel>
+				<StackPanel DockPanel.Dock="Bottom" Margin="0,4,0,0" Orientation="Horizontal">
+					<Button 
+						Command="{Binding Path=ClearExecutionResultsCommand, Mode=OneTime}" 
+						Content="_Clear Execution Results"
+						MinWidth="200" MaxWidth="200"
+						/>
+					<Button 
+						Command="{Binding Path=SaveExecutionResultsCommand, Mode=OneTime}" 
+						Content="_Save Execution Results" 
+						Margin="8,0,0,0"
+						MinWidth="200" MaxWidth="200"
+						/>
+				</StackPanel>
+				<TextBox 
+					x:FieldModifier="private"
+					x:Name="executionResultsEditor"
+					FontSize="13" 
+					ScrollViewer.VerticalScrollBarVisibility="Auto" 
+					Text="{Binding Path=ExecutionResults, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+					/>
+			</DockPanel>
+		</GroupBox>
+	</Grid>
+</UserControl>
